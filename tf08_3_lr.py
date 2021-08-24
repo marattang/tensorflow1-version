@@ -66,4 +66,5 @@ print(sess.run(pred_hypothesis, feed_dict={x_test:[4]}))
 print(sess.run(pred_hypothesis, feed_dict={x_test:[5,6]}))
 print(sess.run(pred_hypothesis, feed_dict={x_test:[6,7,8]}))
 
+# 초기값 난수 기울기 2, 절편 1에 가깝게 하니까 나오긴 함.
 # 4.3936174e-10 [1.9999992] [0.9999994]
