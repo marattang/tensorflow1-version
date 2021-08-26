@@ -63,7 +63,8 @@ b = tf.Variable(tf.compat.v1.random_normal([1, 10]), name='bias')
 hypothesis = tf.nn.softmax(tf.matmul(layer5, w) + b) # activation으로 값 제한. 출력되는 값을 감싼다.(곱한다고 볼 수도 있다.)
 
 cost = tf.losses.softmax_cross_entropy(y, hypothesis) # binary crossentropy
-# cost = tf.reduce_mean(-tf.reduce_sum(y * tf.log(hypothesis), axis=1)) # binary crossentropy
+# cost = tf.reduce_mean(-tf.reduce_sum(y * tf.log(hypothesis), axis=1)) # categorical crossentropy
+# cost = -tf.reduce_mean(y*tf.log(hypothesis)+(1-y)*tf.log(1-hypothesis)) # binary crossentropy
 
 # optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.01)
 optimizer = tf.train.AdamOptimizer(learning_rate=0.01)
@@ -78,7 +79,7 @@ sess.run(tf.global_variables_initializer())
 # predict = [[]]
 
 # 3. 훈련
-for epochs in range(151):
+for epochs in range(201):
     cost_val, hy_val, _ = sess.run([cost, hypothesis, train], 
               feed_dict={x:x_train, y:y_train})
     if epochs % 10 == 0:
@@ -95,4 +96,4 @@ c, a = sess.run([predicted, accuracy], feed_dict={x:x_train, y:y_train})
 print("예측 값 : \n", hy_val,
      '\n 예측 결과값 : \n', c, "\n Accuracy : ", a)
 sess.close()
-#  Accuracy :  0.97119665
+#  Accuracy :  0.99627334
