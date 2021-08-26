@@ -9,9 +9,10 @@ sess = tf.compat.v1.Session()
 
 dataset = load_iris()
 x_data = dataset.data
-y_data = dataset.target
+y_original = dataset.target
+print(type(y_original))
 
-y_data = tf.one_hot(indices=y_data, depth=3).numpy()
+y_data = tf.one_hot(indices=y_original, depth=3).numpy()
 
 tf.compat.v1.disable_eager_execution()
 
