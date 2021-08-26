@@ -16,7 +16,7 @@ y = tf.placeholder(tf.float32, shape=[None, ])
 w = tf.Variable(tf.compat.v1.random_normal([30, 1]), name='weight') # weight는 input과 동일하게 잡아줘야 한다. 
 b = tf.Variable(tf.compat.v1.random_normal([1]), name='bias')
 
-hypothesis = tf.matmul(x, w) + b
+hypothesis = tf.sigmoid(tf.matmul(x, w) + b)
 
 # cost = tf.reduce_mean(tf.square(hypothesis - y))
 cost = -tf.reduce_mean(y*tf.log(hypothesis)+(1-y)*tf.log(1-hypothesis)) # binary crossentropy
