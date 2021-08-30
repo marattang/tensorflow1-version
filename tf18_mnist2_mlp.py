@@ -96,4 +96,4 @@ c, a = sess.run([predicted, accuracy], feed_dict={x:x_train, y:y_train})
 print("예측 값 : \n", hy_val,
      '\n 예측 결과값 : \n', c, "\n Accuracy : ", a)
 sess.close()
-#  Accuracy :  0.99627334
+#  Accuracy :  0.99627334 과적합
