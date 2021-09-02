@@ -66,7 +66,7 @@ w4 = tf.get_variable('w4', shape=[2, 2, 128, 64],
                     initializer=tf.contrib.layers.xavier_initializer())
 L4 = tf.nn.conv2d(L3_maxpool, w4, strides=[1, 1, 1, 1], padding='VALID')
 L4 = tf.nn.leaky_relu(L4)
-L4_maxpool = tf.nn.max_pool(L4, ksize=[1, 2, 2 ,1], strides=[1, 2, 2,1], padding='SAME')
+L4_maxpool = tf.nn.max_pool(L4, ksize=[1, 2, 2 ,1], strides=[1, 2, 2, 1], padding='SAME')
 
 print(L4) # (?, 3, 3 ,64). 연산을 했기 때문에 32로 바뀐다. padding same이기 때문에 그대로 내려간다. (28, 28, 32) valid면 (26, 26, 32)
 print(L4_maxpool) # (?, 2, 2, 64)
